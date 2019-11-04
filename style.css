@@ -1,0 +1,85 @@
+:root {
+    font-size: calc(0.4vw + 12px);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+main {
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+header {
+    height: 5rem;
+    display: flex;
+    align-items: center;
+}
+
+.task-add-container {
+    height: 3rem;
+    width: 30rem;
+    max-width: 90vw;
+    padding-left: .5rem;
+    border-radius: 1.5rem;
+    border: 1px solid orange;
+    display: flex;
+    align-items: center;
+}
+
+.task-add-btn, .task-add-input {
+    height: 100%;
+    border: none;
+    background: none;
+}
+
+.task-add-input {
+    flex-grow: 1;
+    margin-left: 1rem;
+}
+
+.task-add-btn {
+    cursor: pointer;
+    border-radius: 50%;
+    width: 3rem;
+    font-size: 1.5rem;
+}
+
+.task-list {
+    width: 25rem;
+    max-width: 85vw;
+    margin-top: 3rem;
+}
+
+.task {
+    min-height: 2rem;
+    margin-bottom: 1rem;
+    padding: 0 .5rem;
+    border-radius: .2rem;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+}
+
+.task > p {
+    flex-grow: 1;
+}
+
+.task-remove-btn {
+    margin-left: .5rem;
+    height: 1.3rem;
+    width: 1.3rem;
+    border: none;
+    background: url('img/delete.png') center center / contain no-repeat;
+}
