@@ -16,6 +16,7 @@ let toDoApp = {
         this.saveToLocalStorage();
         this.showTasks();
         this.newTask.value = '';
+        this.newTask.focus(); // WORKING ??? 
     },
     saveToLocalStorage() {
         localStorage.setItem('tasks', JSON.stringify(this.tasks));
@@ -46,7 +47,10 @@ let toDoApp = {
                     <p onclick="toDoApp.markAsDone(${i})">${this.tasks[i].taskTekst}</p>
                     <button class="task-remove-btn" onclick="toDoApp.deleteTask(${i})"></button>
                 </div>
-            `;            
+            `;
+            if(this.tasks[i].taskDone) {
+                this.displayedTasks[i].style.textDecoration = 'line-through';
+            }    
         }
     },
     deleteTask(taskID) {
