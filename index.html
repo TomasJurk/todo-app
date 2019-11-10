@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
     <title>To Do App</title>
 </head>
 <body>
@@ -16,21 +15,17 @@
         <header>
             <h1>To do list</h1>
         </header>
-
+        
         <div class="task-add-container">
-            <input type="text" class="task-add-input" autofocus>
-            <button class="task-add-btn">+</button>
+            <input type="text" class="task-add-input" id="newTaskInput" autofocus>
+            <button class="task-add-btn" onclick="toDoApp.addTask()">+</button>
         </div>
-
-        <div class="task-list">
-            <div class="task">
-                <p>asdasd</p>
-                <button class="task-remove-btn"></button>
-            </div>
-        </div>
-
-
+        
+        <div class="task-list"></div>
+        
+        
     </main>
-
+    
+    <script src="script.js"></script>
 </body>
 </html>

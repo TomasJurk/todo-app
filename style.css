@@ -65,19 +65,20 @@ header {
 .task {
     min-height: 2rem;
     margin-bottom: 1rem;
-    padding: 0 .5rem;
+    padding: .3rem .5rem;
     border-radius: .2rem;
     border: 1px solid black;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .task > p {
-    flex-grow: 1;
+    width: 90%;
 }
 
 .task-remove-btn {
-    margin-left: .5rem;
+    cursor: pointer;
     height: 1.3rem;
     width: 1.3rem;
     border: none;
