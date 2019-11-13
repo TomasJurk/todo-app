@@ -15,6 +15,7 @@ body {
 
 main {
     margin: 0 auto;
+    padding-bottom: 3rem;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -22,7 +23,7 @@ main {
 }
 
 header {
-    height: 5rem;
+    height: 7rem;
     display: flex;
     align-items: center;
 }
@@ -33,7 +34,7 @@ header {
     max-width: 90vw;
     padding-left: .5rem;
     border-radius: 1.5rem;
-    border: 1px solid orange;
+    border: 1px solid black;
     display: flex;
     align-items: center;
 }
@@ -51,22 +52,21 @@ header {
 
 .task-add-btn {
     cursor: pointer;
-    border-radius: 50%;
     width: 3rem;
     font-size: 1.5rem;
 }
 
 .task-list {
-    width: 25rem;
-    max-width: 85vw;
+    width: 27rem;
+    max-width: 88vw;
     margin-top: 3rem;
 }
 
 .task {
-    min-height: 2rem;
+    min-height: 2.5rem;
     margin-bottom: 1rem;
-    padding: .3rem .5rem;
-    border-radius: .2rem;
+    padding: .5rem;
+    border-radius: .6rem;
     border: 1px solid black;
     display: flex;
     align-items: center;
@@ -82,5 +82,5 @@ header {
     height: 1.3rem;
     width: 1.3rem;
     border: none;
-    background: url('img/delete.png') center center / contain no-repeat;
+    background: url('delete.png') center center / contain no-repeat;
 }

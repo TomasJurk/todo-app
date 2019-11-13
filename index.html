@@ -17,7 +17,7 @@
         </header>
         
         <div class="task-add-container">
-            <input type="text" class="task-add-input" id="newTaskInput" autofocus>
+            <input type="text" class="task-add-input" id="newTaskInput" onkeyup="toDoApp.trigEnKey(event)" autofocus>
             <button class="task-add-btn" onclick="toDoApp.addTask()">+</button>
         </div>
         

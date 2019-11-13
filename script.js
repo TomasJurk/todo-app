@@ -16,7 +16,12 @@ let toDoApp = {
         this.saveToLocalStorage();
         this.showTasks();
         this.newTask.value = '';
-        this.newTask.focus(); // WORKING ??? 
+        this.newTask.focus();
+    },
+    trigEnKey(event) {
+        if(event.keyCode === 13) {
+            this.addTask();
+        }
     },
     saveToLocalStorage() {
         localStorage.setItem('tasks', JSON.stringify(this.tasks));
@@ -54,7 +59,7 @@ let toDoApp = {
         }
     },
     deleteTask(taskID) {
-        // ......
+        this.tasks.splice(taskID, 1);
         this.saveToLocalStorage();
         this.showTasks();
     }
