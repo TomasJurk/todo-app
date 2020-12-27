@@ -11,6 +11,7 @@ let toDoApp = {
         }
         this.tasks.push({
             taskTekst: this.newTask.value,
+            editing: false,
             taskDone: false
         });
         this.saveToLocalStorage();
@@ -31,8 +32,10 @@ let toDoApp = {
         task.taskDone = !task.taskDone;
         if(task.taskDone) {
             this.displayedTasks[taskID].style.textDecoration = 'line-through';
+            this.displayedTasks[taskID].style.backgroundColor = 'lightgreen';
         } else {
             this.displayedTasks[taskID].style.textDecoration = 'none';
+            this.displayedTasks[taskID].style.background = 'none';
         }
         this.saveToLocalStorage();
         
@@ -50,13 +53,49 @@ let toDoApp = {
             this.tasksContainer.innerHTML += `
                 <div class="task">
                     <p onclick="toDoApp.markAsDone(${i})">${this.tasks[i].taskTekst}</p>
+                    <button class="task-edit-btn" onclick="toDoApp.editTask(${i})"></button>
                     <button class="task-remove-btn" onclick="toDoApp.deleteTask(${i})"></button>
                 </div>
             `;
             if(this.tasks[i].taskDone) {
                 this.displayedTasks[i].style.textDecoration = 'line-through';
+                this.displayedTasks[i].style.backgroundColor = 'lightgreen';
             }    
         }
+    },
+    editTask(taskID) {
+        ///////////////////////// USE THIS OR EXECUTE showTasks() here every time???
+        this.tasks.forEach((t, i) => {
+            if (t.editing) {
+                t.editing = false;
+                this.displayedTasks[i].style.background = 'none';
+            }
+        });
+        /////////////////
+        this.tasks[taskID].editing = true;
+        this.tasks[taskID].taskDone = false;
+        this.displayedTasks[taskID].style.textDecoration = 'none';
+        this.displayedTasks[taskID].style.backgroundColor = '#fffce3';
+        this.saveToLocalStorage();
+        const textHeight = this.displayedTasks[taskID].querySelector('p').getClientRects()[0].height;
+        this.displayedTasks[taskID].innerHTML = `
+            <textarea class="task-edit-input" oninput="toDoApp.autoResize(this)" style="min-height: ${textHeight}px">${this.tasks[taskID].taskTekst}</textarea>
+            <button class="task-save-btn" onclick="toDoApp.saveChange(${taskID})"></button>
+        `;
+        const textElement = this.displayedTasks[taskID].querySelector('textarea');
+        textElement.focus();
+        textElement.setSelectionRange(textElement.value.length,textElement.value.length);
+    },
+    autoResize(el) {
+        el.style.height = (el.scrollHeight)+'px';
+    },
+    saveChange(taskID) {
+        const updatedTask = this.displayedTasks[taskID].querySelector('textarea').value;
+        this.tasks[taskID].taskTekst = updatedTask;
+        this.tasks.forEach(t => t.editing = false);
+        this.displayedTasks[taskID].style.background = 'none';
+        this.saveToLocalStorage();
+        this.showTasks();
     },
     deleteTask(taskID) {
         this.tasks.splice(taskID, 1);

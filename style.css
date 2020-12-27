@@ -39,10 +39,17 @@ header {
     align-items: center;
 }
 
-.task-add-btn, .task-add-input {
+.task-add-btn, .task-add-input, .task-edit-input {
     height: 100%;
     border: none;
     background: none;
+}
+
+.task-edit-input {
+    width: 80%;
+    font: inherit;
+    height: 1rem;
+    resize: none;
 }
 
 .task-add-input {
@@ -74,13 +81,25 @@ header {
 }
 
 .task > p {
-    width: 90%;
+    width: 80%;
 }
 
-.task-remove-btn {
+.task-remove-btn, .task-edit-btn, .task-save-btn {
     cursor: pointer;
     height: 1.3rem;
     width: 1.3rem;
     border: none;
+}
+
+.task-edit-btn {
+    background: url('edit.png') center center / contain no-repeat;
+}
+
+.task-save-btn {
+    background: url('check.png') center center / contain no-repeat;
+    margin: 0 auto;
+}
+
+.task-remove-btn {
     background: url('delete.png') center center / contain no-repeat;
 }
