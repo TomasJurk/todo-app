@@ -47,16 +47,19 @@ let toDoApp = {
         return;
         
     },
+    createElementHandler (index) {
+        return `
+            <div class="task">
+                <p onclick="toDoApp.markAsDone(${index})">${this.tasks[index].taskTekst}</p>
+                <button class="task-edit-btn" onclick="toDoApp.editTask(${index})"></button>
+                <button class="task-remove-btn" onclick="toDoApp.deleteTask(${index})"></button>
+            </div>
+        `
+    },
     showTasks() {
         this.tasksContainer.innerHTML = '';
         for (let i = 0; i < this.tasks.length; i++) {
-            this.tasksContainer.innerHTML += `
-                <div class="task">
-                    <p onclick="toDoApp.markAsDone(${i})">${this.tasks[i].taskTekst}</p>
-                    <button class="task-edit-btn" onclick="toDoApp.editTask(${i})"></button>
-                    <button class="task-remove-btn" onclick="toDoApp.deleteTask(${i})"></button>
-                </div>
-            `;
+            this.tasksContainer.innerHTML += this.createElementHandler(i);
             if(this.tasks[i].taskDone) {
                 this.displayedTasks[i].style.textDecoration = 'line-through';
                 this.displayedTasks[i].style.backgroundColor = 'lightgreen';
@@ -64,14 +67,13 @@ let toDoApp = {
         }
     },
     editTask(taskID) {
-        ///////////////////////// USE THIS OR EXECUTE showTasks() here every time???
         this.tasks.forEach((t, i) => {
             if (t.editing) {
                 t.editing = false;
                 this.displayedTasks[i].style.background = 'none';
+                this.displayedTasks[i].outerHTML = this.createElementHandler(i);
             }
         });
-        /////////////////
         this.tasks[taskID].editing = true;
         this.tasks[taskID].taskDone = false;
         this.displayedTasks[taskID].style.textDecoration = 'none';

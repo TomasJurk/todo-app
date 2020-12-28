@@ -43,11 +43,11 @@ header {
     height: 100%;
     border: none;
     background: none;
+    font: inherit;
 }
 
 .task-edit-input {
     width: 80%;
-    font: inherit;
     height: 1rem;
     resize: none;
 }
@@ -91,15 +91,21 @@ header {
     border: none;
 }
 
+/* Try to add icons as an img or icon elements inside the buttons */
+.icon {
+    width: 100%;
+    height: 100%;
+}
+
 .task-edit-btn {
-    background: url('edit.png') center center / contain no-repeat;
+    background: url('edit.svg') center center / contain no-repeat;
 }
 
 .task-save-btn {
-    background: url('check.png') center center / contain no-repeat;
+    background: url('check.svg') center center / contain no-repeat;
     margin: 0 auto;
 }
 
 .task-remove-btn {
-    background: url('delete.png') center center / contain no-repeat;
+    background: url('delete.svg') center center / contain no-repeat;
 }
